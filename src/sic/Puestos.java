@@ -236,7 +236,7 @@ public class Puestos extends javax.swing.JFrame {
             try{
                 sql = "call  set_puesto('"+this.tNombrePuesto.getText()+"', '"
              + this.comboDepto.getItemAt(this.comboDepto.getSelectedIndex())+ "','"
-                + this.tDescrip.getText() + "')";
+                + this.tDescrip.getText() + "'," + this.tSalario.getText() + ")";
                 System.out.println(sql);
             }catch(Exception e){
                 System.out.println("Error: " + e);
@@ -244,9 +244,9 @@ public class Puestos extends javax.swing.JFrame {
             f.FramepushDB(sql);
         }else{
             try{
-                sql = "call  alter_puesto('"+this.tNombrePuesto.getText()+"', '"
+                sql = "call  alter_puesto("+ this.tIdPuesto.getText() + ",'"+this.tNombrePuesto.getText()+"', '"
              + this.comboDepto.getItemAt(this.comboDepto.getSelectedIndex())+ "','"
-                + this.tDescrip.getText() + "')";
+                + this.tDescrip.getText() + "'," + this.tSalario.getText() + ")";
                 System.out.println(sql);
             }catch(Exception e){
                 System.out.println("Error: " + e);
@@ -261,8 +261,9 @@ public class Puestos extends javax.swing.JFrame {
         FrameDBManager f = new FrameDBManager();
         String correlativo = f.getConsultarDato(sql);
         System.out.println(correlativo);
-        this.tIdPuesto.setText(correlativo);
         
+        this.tIdPuesto.setText(correlativo);
+        this.tSalario.setText("");
         this.tDescrip.setText("");
         this.tNombrePuesto.setText("");
     }//GEN-LAST:event_btnNuevoActionPerformed
