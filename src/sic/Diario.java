@@ -62,9 +62,9 @@ public class Diario extends javax.swing.JFrame {
         btnNuevo = new javax.swing.JButton();
         btnGuardar = new javax.swing.JButton();
         btnSalir = new javax.swing.JButton();
-        tFecha = new javax.swing.JTextField();
         tValor = new javax.swing.JTextField();
         btnOk = new javax.swing.JButton();
+        tFecha = new javax.swing.JFormattedTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("Diario");
@@ -188,6 +188,8 @@ public class Diario extends javax.swing.JFrame {
             }
         });
 
+        tFecha.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.DateFormatter(new java.text.SimpleDateFormat("dd/MM/yyyy"))));
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -214,8 +216,8 @@ public class Diario extends javax.swing.JFrame {
                                         .addComponent(tNPartida, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE)
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                         .addComponent(jLabel3)
-                                        .addGap(29, 29, 29)
-                                        .addComponent(tFecha, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                        .addComponent(tFecha, javax.swing.GroupLayout.PREFERRED_SIZE, 147, javax.swing.GroupLayout.PREFERRED_SIZE))
                                     .addComponent(jScrollPane1)))
                             .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
                                 .addComponent(jLabel4)
@@ -246,14 +248,16 @@ public class Diario extends javax.swing.JFrame {
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(26, 26, 26)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGap(23, 23, 23)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addComponent(jLabel1)
-                        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(tFecha, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel3)))
-                    .addComponent(tNPartida, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel1)
+                            .addComponent(jLabel3, javax.swing.GroupLayout.Alignment.TRAILING))
+                        .addComponent(tNPartida, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(tFecha, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(2, 2, 2)))
                 .addGap(28, 28, 28)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel2)
@@ -271,7 +275,7 @@ public class Diario extends javax.swing.JFrame {
                     .addComponent(comboCargoAbono, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(tValor, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btnOk))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 43, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 44, Short.MAX_VALUE)
                 .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 194, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(26, 26, 26)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
@@ -287,7 +291,7 @@ public class Diario extends javax.swing.JFrame {
     private void btnGuardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGuardarActionPerformed
         // TODO add your handling code here:
         if(comprobar()){
-            DefaultTableModel modelo = (DefaultTableModel)this.tblDiario.getModel();
+            DefaultTableModel model = (DefaultTableModel)this.tblDiario.getModel();
             int filas = this.tblDiario.getRowCount();
             filas = filas-1;
             
@@ -297,16 +301,16 @@ public class Diario extends javax.swing.JFrame {
             String idPartida = f.getConsultarDato(sql);
             
             for (int i = 0; i <= filas; i++) {
-                double cargo = Double.parseDouble(modelo.getValueAt(i, 2).toString());
-                double abono = Double.parseDouble(modelo.getValueAt(i, 3).toString());
+                double cargo = Double.parseDouble(model.getValueAt(i, 2).toString());
+                double abono = Double.parseDouble(model.getValueAt(i, 3).toString());
                 System.out.println("cargo: "+ cargo + " abono: "+ abono);
                 if(cargo > 0.0){
                     sql = "call set_descripcion(" + idPartida + ",'"
-                    +modelo.getValueAt(0, i) + "', -"+ cargo+");";
+                    +model.getValueAt(0, i) + "', -"+ cargo+");";
                     f.FramepushDB(sql);
                 }else{
                     sql = "call set_descripcion(" + idPartida + ",'"
-                    +modelo.getValueAt(0, i) + "',"+ abono+");";
+                    +model.getValueAt(0, i) + "',"+ abono+");";
                     f.FramepushDB(sql);
                 }
             }
@@ -394,15 +398,20 @@ public class Diario extends javax.swing.JFrame {
     
     private void btnNuevoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnNuevoActionPerformed
         // TODO add your handling code here:
-        String sql = "call set_partida("+ this.tFecha.getText()+ ", '"+ this.jTextArea1.getText()+"');";
-        FrameDBManager f = new FrameDBManager();
-        f.FramepushDB(sql);
-        
-        sql = "call get_cod_partida";
-        String correlativo = f.getConsultarDato(sql);
-        System.out.println(correlativo);
-        
-        this.tNPartida.setText(correlativo);
+        if(this.tFecha.getText().compareTo("") == 0 && this.jTextArea1.getText().compareTo("") == 0){
+            JOptionPane.showMessageDialog(rootPane, "Para generar una nueva partida necesita completar "
+                    + "los campos fecha y concepto");
+        }else{
+            String sql = "call set_partida("+ this.tFecha.getText()+ ", '"+ this.jTextArea1.getText()+"');";
+            FrameDBManager f = new FrameDBManager();
+            f.FramepushDB(sql);
+
+            sql = "call get_cod_partida";
+            String correlativo = f.getConsultarDato(sql);
+            System.out.println(correlativo);
+
+            this.tNPartida.setText(correlativo);
+        }
     }//GEN-LAST:event_btnNuevoActionPerformed
 
     /**
@@ -456,7 +465,7 @@ public class Diario extends javax.swing.JFrame {
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JTextArea jTextArea1;
     private javax.swing.JTextField tDetalleCuenta;
-    private javax.swing.JTextField tFecha;
+    private javax.swing.JFormattedTextField tFecha;
     private javax.swing.JTextField tNCuenta;
     private javax.swing.JTextField tNPartida;
     private javax.swing.JTextField tValor;
