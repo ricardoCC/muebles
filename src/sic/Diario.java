@@ -2,7 +2,6 @@ package sic;
 
 import DBAdmon.FrameDBManager;
 import java.awt.BorderLayout;
-import java.util.Vector;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableColumn;
@@ -289,24 +288,25 @@ public class Diario extends javax.swing.JFrame {
         // TODO add your handling code here:
         if(comprobar()){
             DefaultTableModel modelo = (DefaultTableModel)this.tblDiario.getModel();
-            int filas = this.tblDiario.getRowCount() - 1;
+            int filas = this.tblDiario.getRowCount();
+            filas = filas-1;
             
             
             FrameDBManager f = new FrameDBManager();
             String sql = "call get_cod_partida";
             String idPartida = f.getConsultarDato(sql);
             
-            for (int i = 0; i < filas; i++) {
-                double cargo = Double.parseDouble(modelo.getValueAt(2, i).toString());
-                double abono = Double.parseDouble(modelo.getValueAt(3, i).toString());
-                
+            for (int i = 0; i <= filas; i++) {
+                double cargo = Double.parseDouble(modelo.getValueAt(i, 2).toString());
+                double abono = Double.parseDouble(modelo.getValueAt(i, 3).toString());
+                System.out.println("cargo: "+ cargo + " abono: "+ abono);
                 if(cargo > 0.0){
-                    sql = "call set_descripcion(" + idPartida + ","
-                    +modelo.getValueAt(0, i) + ","+ cargo+");";
+                    sql = "call set_descripcion(" + idPartida + ",'"
+                    +modelo.getValueAt(0, i) + "', -"+ cargo+");";
                     f.FramepushDB(sql);
                 }else{
-                    sql = "call set_descripcion(" + idPartida + ","
-                    +modelo.getValueAt(0, i) + ","+ abono+");";
+                    sql = "call set_descripcion(" + idPartida + ",'"
+                    +modelo.getValueAt(0, i) + "',"+ abono+");";
                     f.FramepushDB(sql);
                 }
             }
@@ -316,23 +316,24 @@ public class Diario extends javax.swing.JFrame {
     private Boolean comprobar(){
         
         double deudor = 0.0, acreedor = 0.0, valor;
-        
-        int filas = this.tblDiario.getRowCount();
-        filas = filas -1;
-        
-        for (int i = 0; i <= filas; i++) {
-            valor = Double.parseDouble(this.tblDiario.getValueAt(i, 2).toString());
-            deudor = deudor + valor;
-            System.out.println("deudor: "+ deudor);
-            
-            valor = Double.parseDouble(this.tblDiario.getValueAt(i, 3).toString());
-            acreedor = acreedor + valor;
-            System.out.println("acreedor: "+ acreedor);
+       
+        try {
+            int filas = this.tblDiario.getRowCount();
+            filas = filas -1;
+
+            for (int i = 0; i <= filas; i++) {
+                valor = Double.parseDouble(this.tblDiario.getValueAt(i, 2).toString());
+                deudor = deudor + valor;
+                //System.out.println("deudor: "+ deudor);
+
+                valor = Double.parseDouble(this.tblDiario.getValueAt(i, 3).toString());
+                acreedor = acreedor + valor;
+                //System.out.println("acreedor: "+ acreedor);
+            }
+        } catch (Exception e) {
+            System.out.println(e);
         }
         
-        for (int i = 0; i <= filas; i++) {
-            
-        }
         
         if (deudor == acreedor){
             return true;
