@@ -10,7 +10,7 @@ public class FondoPantallas extends javax.swing.JPanel {
 
     public FondoPantallas() {
         initComponents();
-        this.setSize(900,900);
+        this.setSize(1000,1000);
     }
     
     public void paintComponent(Graphics g){
