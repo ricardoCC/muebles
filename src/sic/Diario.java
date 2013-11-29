@@ -2,6 +2,8 @@ package sic;
 
 import DBAdmon.FrameDBManager;
 import java.awt.BorderLayout;
+import java.util.Vector;
+import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableColumn;
 
@@ -285,21 +287,60 @@ public class Diario extends javax.swing.JFrame {
 
     private void btnGuardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGuardarActionPerformed
         // TODO add your handling code here:
-        
+        if(comprobar()){
+            DefaultTableModel modelo = (DefaultTableModel)this.tblDiario.getModel();
+            int filas = this.tblDiario.getRowCount() - 1;
+            
+            
+            FrameDBManager f = new FrameDBManager();
+            String sql = "call get_cod_partida";
+            String idPartida = f.getConsultarDato(sql);
+            
+            for (int i = 0; i < filas; i++) {
+                double cargo = Double.parseDouble(modelo.getValueAt(2, i).toString());
+                double abono = Double.parseDouble(modelo.getValueAt(3, i).toString());
+                
+                if(cargo > 0.0){
+                    sql = "call set_descripcion(" + idPartida + ","
+                    +modelo.getValueAt(0, i) + ","+ cargo+");";
+                    f.FramepushDB(sql);
+                }else{
+                    sql = "call set_descripcion(" + idPartida + ","
+                    +modelo.getValueAt(0, i) + ","+ abono+");";
+                    f.FramepushDB(sql);
+                }
+            }
+        }
     }//GEN-LAST:event_btnGuardarActionPerformed
 
     private Boolean comprobar(){
         
-        double dedudor = 0.0, acreedor = 0.0, valor;
+        double deudor = 0.0, acreedor = 0.0, valor;
         
-        int filas = this.tblDiario.getRowCount() - 1;
+        int filas = this.tblDiario.getRowCount();
+        filas = filas -1;
         
-        for (int i = 0; i < filas; i++) {
+        for (int i = 0; i <= filas; i++) {
+            valor = Double.parseDouble(this.tblDiario.getValueAt(i, 2).toString());
+            deudor = deudor + valor;
+            System.out.println("deudor: "+ deudor);
+            
             valor = Double.parseDouble(this.tblDiario.getValueAt(i, 3).toString());
-            System.out.println(valor);
+            acreedor = acreedor + valor;
+            System.out.println("acreedor: "+ acreedor);
         }
         
-        return false;
+        for (int i = 0; i <= filas; i++) {
+            
+        }
+        
+        if (deudor == acreedor){
+            return true;
+        }else{
+            JOptionPane.showMessageDialog(rootPane,"No se cumple partida doble");
+            return false;
+        }
+        
     }
     
     private void tblDiarioAncestorResized(java.awt.event.HierarchyEvent evt) {//GEN-FIRST:event_tblDiarioAncestorResized
@@ -321,10 +362,12 @@ public class Diario extends javax.swing.JFrame {
     if( "Cargo".equals(seleccion)){
         Datos[2]=tValor.getText();
         tValor.setText(null);
+        Datos[3]= "0.0";
        }else
     {
         Datos[3]=tValor.getText();
         tValor.setText(null);
+        Datos[2]= "0.0";
     }
            
     modelo.addRow(Datos);
@@ -350,13 +393,14 @@ public class Diario extends javax.swing.JFrame {
     
     private void btnNuevoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnNuevoActionPerformed
         // TODO add your handling code here:
-        String sql = "call get_cod_partida()";
+        String sql = "call set_partida("+ this.tFecha.getText()+ ", '"+ this.jTextArea1.getText()+"');";
         FrameDBManager f = new FrameDBManager();
+        f.FramepushDB(sql);
+        
+        sql = "call get_cod_partida";
         String correlativo = f.getConsultarDato(sql);
         System.out.println(correlativo);
         
-	//esto limpia todos lo jTextField
-        this.limpiar();
         this.tNPartida.setText(correlativo);
     }//GEN-LAST:event_btnNuevoActionPerformed
 
