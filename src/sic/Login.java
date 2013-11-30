@@ -142,17 +142,21 @@ public class Login extends javax.swing.JFrame {
     }//GEN-LAST:event_TusuarioActionPerformed
 
     private void btnOkActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnOkActionPerformed
-     if(String.valueOf(Tusuario.getText()).compareTo("")==0 && String.valueOf(jPassword.getPassword()). compareTo("")== 0){
-        JOptionPane.showMessageDialog(rootPane, "ingrese Usuario y Contraseña");
-     }else {
-       if(String.valueOf(Tusuario.getText()).compareTo("supervisor")==0 || (Tusuario.getText()).compareTo("SUPERVISOR")==0 && String.valueOf(jPassword.getPassword()). compareTo("sic115")== 0 || String.valueOf(jPassword.getPassword()). compareTo("SIC115")== 0){   
-       PantallaPrincipal princ = new PantallaPrincipal();
-       princ.setVisible(true);
-       dispose();
-       }else{
-           JOptionPane.showMessageDialog(rootPane, "Usuario o Contraseña Incorrecta");
-       }}
-       
+     try{
+        if(String.valueOf(Tusuario.getText()).compareTo("")==0 && String.valueOf(jPassword.getPassword()). compareTo("")== 0){
+            JOptionPane.showMessageDialog(rootPane, "ingrese Usuario y Contraseña");
+        }else {
+          if(String.valueOf(Tusuario.getText()).compareTo("supervisor")==0 || (Tusuario.getText()).compareTo("SUPERVISOR")==0 && String.valueOf(jPassword.getPassword()). compareTo("sic115")== 0 || String.valueOf(jPassword.getPassword()). compareTo("SIC115")== 0){   
+          PantallaPrincipal princ = new PantallaPrincipal();
+          princ.setVisible(true);
+          dispose();
+          }else{
+              JOptionPane.showMessageDialog(rootPane, "Usuario o Contraseña Incorrecta");
+          }}
+     }catch(Exception e){
+            JOptionPane.showMessageDialog(null, e);
+        }
+
     }//GEN-LAST:event_btnOkActionPerformed
 
     private void btnCancelActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCancelActionPerformed

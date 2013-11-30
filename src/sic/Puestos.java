@@ -244,9 +244,10 @@ public class Puestos extends javax.swing.JFrame {
             f.FramepushDB(sql);
         }else{
             try{
-                sql = "call  alter_puesto("+ this.tIdPuesto.getText() + ",'"+this.tNombrePuesto.getText()+"', '"
-             + this.comboDepto.getItemAt(this.comboDepto.getSelectedIndex())+ "','"
-                + this.tDescrip.getText() + "'," + this.tSalario.getText() + ")";
+                sql = "UPDATE tbl_puesto SET NOMBRE = '"+this.tNombrePuesto.getText()
+                  +"', DEPARTAMENTO = '"+ this.comboDepto.getItemAt(this.comboDepto.getSelectedIndex())
+                  + "', DESCRIPCION = '"+ this.tDescrip.getText() + "', SALARIOBASE = " + this.tSalario.getText() 
+                  + " WHERE IDPUESTO = " + this.tIdPuesto.getText() + " ;";
                 System.out.println(sql);
             }catch(Exception e){
                 System.out.println("Error: " + e);

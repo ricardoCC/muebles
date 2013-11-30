@@ -22,16 +22,12 @@ public class PantallaPrincipal extends javax.swing.JFrame {
         btnCatalogo = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
         btnReporteDiario = new javax.swing.JButton();
-        btnClientes = new javax.swing.JButton();
-        btnProveedores = new javax.swing.JButton();
         btnPuesto = new javax.swing.JButton();
         btnConfiguracion = new javax.swing.JButton();
         jLabel2 = new javax.swing.JLabel();
         btnempleados = new javax.swing.JButton();
         btnReporteMayorizacion = new javax.swing.JButton();
         btnDiario1 = new javax.swing.JButton();
-        btnReporteClientes = new javax.swing.JButton();
-        jButton1 = new javax.swing.JButton();
         jButton2 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -96,46 +92,8 @@ public class PantallaPrincipal extends javax.swing.JFrame {
                 btnReporteDiarioActionPerformed(evt);
             }
         });
-        btnReporteDiario.setBounds(100, 360, 170, 100);
+        btnReporteDiario.setBounds(130, 360, 170, 100);
         jDesktopPane1.add(btnReporteDiario, javax.swing.JLayeredPane.DEFAULT_LAYER);
-
-        btnClientes.setFont(new java.awt.Font("Bookman Old Style", 1, 14)); // NOI18N
-        btnClientes.setForeground(new java.awt.Color(204, 204, 0));
-        btnClientes.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenespp/client48.png"))); // NOI18N
-        btnClientes.setText("Clientes");
-        btnClientes.setBorderPainted(false);
-        btnClientes.setContentAreaFilled(false);
-        btnClientes.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        btnClientes.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
-        btnClientes.setPressedIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenespp/client48.png"))); // NOI18N
-        btnClientes.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenespp/cliente64.png"))); // NOI18N
-        btnClientes.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
-        btnClientes.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnClientesActionPerformed(evt);
-            }
-        });
-        btnClientes.setBounds(540, 150, 170, 100);
-        jDesktopPane1.add(btnClientes, javax.swing.JLayeredPane.DEFAULT_LAYER);
-
-        btnProveedores.setFont(new java.awt.Font("Bookman Old Style", 1, 14)); // NOI18N
-        btnProveedores.setForeground(new java.awt.Color(204, 204, 0));
-        btnProveedores.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenespp/proveedores48.png"))); // NOI18N
-        btnProveedores.setText("Proveedores");
-        btnProveedores.setBorderPainted(false);
-        btnProveedores.setContentAreaFilled(false);
-        btnProveedores.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        btnProveedores.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
-        btnProveedores.setPressedIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenespp/proveedores48.png"))); // NOI18N
-        btnProveedores.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenespp/proveedores64.png"))); // NOI18N
-        btnProveedores.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
-        btnProveedores.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnProveedoresActionPerformed(evt);
-            }
-        });
-        btnProveedores.setBounds(720, 150, 170, 100);
-        jDesktopPane1.add(btnProveedores, javax.swing.JLayeredPane.DEFAULT_LAYER);
 
         btnPuesto.setFont(new java.awt.Font("Bookman Old Style", 1, 14)); // NOI18N
         btnPuesto.setForeground(new java.awt.Color(204, 204, 0));
@@ -153,7 +111,7 @@ public class PantallaPrincipal extends javax.swing.JFrame {
                 btnPuestoActionPerformed(evt);
             }
         });
-        btnPuesto.setBounds(900, 150, 170, 100);
+        btnPuesto.setBounds(590, 150, 170, 100);
         jDesktopPane1.add(btnPuesto, javax.swing.JLayeredPane.DEFAULT_LAYER);
 
         btnConfiguracion.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenespp/config32.png"))); // NOI18N
@@ -162,7 +120,7 @@ public class PantallaPrincipal extends javax.swing.JFrame {
         btnConfiguracion.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         btnConfiguracion.setPressedIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenespp/config32.png"))); // NOI18N
         btnConfiguracion.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenespp/config48.png"))); // NOI18N
-        btnConfiguracion.setBounds(1250, 620, 100, 60);
+        btnConfiguracion.setBounds(1020, 440, 100, 60);
         jDesktopPane1.add(btnConfiguracion, javax.swing.JLayeredPane.DEFAULT_LAYER);
 
         jLabel2.setBackground(new java.awt.Color(0, 51, 51));
@@ -188,7 +146,7 @@ public class PantallaPrincipal extends javax.swing.JFrame {
                 btnempleadosActionPerformed(evt);
             }
         });
-        btnempleados.setBounds(1060, 150, 170, 100);
+        btnempleados.setBounds(810, 150, 170, 100);
         jDesktopPane1.add(btnempleados, javax.swing.JLayeredPane.DEFAULT_LAYER);
 
         btnReporteMayorizacion.setFont(new java.awt.Font("Bookman Old Style", 1, 14)); // NOI18N
@@ -202,7 +160,7 @@ public class PantallaPrincipal extends javax.swing.JFrame {
         btnReporteMayorizacion.setPressedIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenespp/libromayor48.png"))); // NOI18N
         btnReporteMayorizacion.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenespp/libromayor64.png"))); // NOI18N
         btnReporteMayorizacion.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
-        btnReporteMayorizacion.setBounds(330, 360, 170, 100);
+        btnReporteMayorizacion.setBounds(360, 360, 170, 100);
         jDesktopPane1.add(btnReporteMayorizacion, javax.swing.JLayeredPane.DEFAULT_LAYER);
 
         btnDiario1.setFont(new java.awt.Font("Bookman Old Style", 1, 14)); // NOI18N
@@ -225,34 +183,6 @@ public class PantallaPrincipal extends javax.swing.JFrame {
         btnDiario1.setBounds(350, 150, 170, 100);
         jDesktopPane1.add(btnDiario1, javax.swing.JLayeredPane.DEFAULT_LAYER);
 
-        btnReporteClientes.setFont(new java.awt.Font("Bookman Old Style", 1, 14)); // NOI18N
-        btnReporteClientes.setForeground(new java.awt.Color(204, 204, 0));
-        btnReporteClientes.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenespp/reportecliente48.png"))); // NOI18N
-        btnReporteClientes.setText("Clientes");
-        btnReporteClientes.setBorderPainted(false);
-        btnReporteClientes.setContentAreaFilled(false);
-        btnReporteClientes.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        btnReporteClientes.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
-        btnReporteClientes.setPressedIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenespp/reportecliente48.png"))); // NOI18N
-        btnReporteClientes.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenespp/reportecliente64.png"))); // NOI18N
-        btnReporteClientes.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
-        btnReporteClientes.setBounds(540, 360, 170, 100);
-        jDesktopPane1.add(btnReporteClientes, javax.swing.JLayeredPane.DEFAULT_LAYER);
-
-        jButton1.setFont(new java.awt.Font("Bookman Old Style", 1, 14)); // NOI18N
-        jButton1.setForeground(new java.awt.Color(204, 204, 0));
-        jButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenespp/rproveedores48.png"))); // NOI18N
-        jButton1.setText("Proveedores");
-        jButton1.setBorderPainted(false);
-        jButton1.setContentAreaFilled(false);
-        jButton1.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        jButton1.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
-        jButton1.setPressedIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenespp/rproveedores48.png"))); // NOI18N
-        jButton1.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenespp/reporteproveedores64.png"))); // NOI18N
-        jButton1.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
-        jButton1.setBounds(730, 360, 170, 100);
-        jDesktopPane1.add(jButton1, javax.swing.JLayeredPane.DEFAULT_LAYER);
-
         jButton2.setFont(new java.awt.Font("Bookman Old Style", 1, 14)); // NOI18N
         jButton2.setForeground(new java.awt.Color(204, 204, 0));
         jButton2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenespp/planilla48.png"))); // NOI18N
@@ -264,30 +194,22 @@ public class PantallaPrincipal extends javax.swing.JFrame {
         jButton2.setPressedIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenespp/planilla48.png"))); // NOI18N
         jButton2.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenespp/planilla64.png"))); // NOI18N
         jButton2.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
-        jButton2.setBounds(970, 360, 170, 100);
+        jButton2.setBounds(610, 360, 170, 100);
         jDesktopPane1.add(jButton2, javax.swing.JLayeredPane.DEFAULT_LAYER);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addComponent(jDesktopPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 1361, Short.MAX_VALUE)
-                .addGap(0, 0, 0))
+            .addComponent(jDesktopPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 1101, javax.swing.GroupLayout.PREFERRED_SIZE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jDesktopPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 686, Short.MAX_VALUE)
+            .addComponent(jDesktopPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 498, javax.swing.GroupLayout.PREFERRED_SIZE)
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-
-    private void btnClientesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnClientesActionPerformed
-         Clientes cli = new Clientes();
-         cli.setVisible(true);
-         
-    }//GEN-LAST:event_btnClientesActionPerformed
 
     private void btnReporteDiarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnReporteDiarioActionPerformed
         
@@ -297,11 +219,6 @@ public class PantallaPrincipal extends javax.swing.JFrame {
         Cuenta cta = new Cuenta();
         cta.setVisible(true);
     }//GEN-LAST:event_btnCatalogoActionPerformed
-
-    private void btnProveedoresActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnProveedoresActionPerformed
-        Proveedores prov = new Proveedores();
-        prov.setVisible(true);
-    }//GEN-LAST:event_btnProveedoresActionPerformed
 
     private void btnPuestoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPuestoActionPerformed
        Puestos puestos = new Puestos();
@@ -359,16 +276,12 @@ public class PantallaPrincipal extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel LabelFecha;
     private javax.swing.JButton btnCatalogo;
-    private javax.swing.JButton btnClientes;
     private javax.swing.JButton btnConfiguracion;
     private javax.swing.JButton btnDiario1;
-    private javax.swing.JButton btnProveedores;
     private javax.swing.JButton btnPuesto;
-    private javax.swing.JButton btnReporteClientes;
     private javax.swing.JButton btnReporteDiario;
     private javax.swing.JButton btnReporteMayorizacion;
     private javax.swing.JButton btnempleados;
-    private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
     private javax.swing.JDesktopPane jDesktopPane1;
     private javax.swing.JLabel jLabel1;
